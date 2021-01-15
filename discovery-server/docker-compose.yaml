@@ -1,0 +1,16 @@
+version: '3.7'
+
+# Define services
+services:
+  discovery-server:
+    build:
+      context: .
+      dockerfile: deployment/docker/Dockerfile
+    restart: always
+    tty: true
+    command: >
+      java -Dcom.sun.management.jmxremote -noverify ${JAVA_OPTS} -jar app.jar
+    expose:
+      - 8787
+    ports:
+      - "8787:8787"

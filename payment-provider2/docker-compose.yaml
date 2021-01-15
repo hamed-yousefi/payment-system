@@ -1,0 +1,16 @@
+version: '3.7'
+
+# Define services
+services:
+  payment-provider2:
+    build:
+      context: .
+      dockerfile: deployment/docker/Dockerfile
+    restart: always
+    tty: true
+    command: >
+      java -Dcom.sun.management.jmxremote -noverify ${JAVA_OPTS} -jar app.jar
+    expose:
+      - 12102
+    ports:
+      - "12102:12102"

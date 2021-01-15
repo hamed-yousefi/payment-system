@@ -1,0 +1,6 @@
+!build
+!discovery-server/build
+!payment-gateway/build
+!payment-provider1/build
+!payment-provider2/build
+!sms-provider/build

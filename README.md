@@ -1,0 +1,12 @@
+# Payment Gateway
+
+### System Design
+![system design](payment-gateway/docs/images/system-design.png)
+
+### Microservices
+This project contains five services:
+- payment-gateway: Core component of this system.
+- discover-server: Responsible for service discovery, load balancing and service health check.
+- payment-provider1: A payment provider for card transfers which source card number starts with `6307`.
+- payment-provider1: A payment provider for card transfers which source card number can start with any number except `6307`.
+- sms-provider: a service for sending SMS to users.

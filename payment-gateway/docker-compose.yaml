@@ -1,0 +1,45 @@
+version: '3.7'
+
+# Define services
+services:
+  db:
+    image: postgres:11.5-alpine
+    restart: always
+    tty: true
+    environment:
+      POSTGRES_USER: fp
+      POSTGRES_PASSWORD: local
+      POSTGRES_DB: payment_gateway
+    ports:
+      - "5556:5432"
+    volumes:
+      - "pg_data_vol:/var/lib/postgresql/data"
+      - ./build/database/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql:ro
+    networks:
+      - net_db
+
+  standalone:
+    image: apachepulsar/pulsar
+    expose:
+      - 8080
+      - 6650
+    environment:
+      - PULSAR_MEM=" -Xms512m -Xmx512m -XX:MaxDirectMemorySize=1g"
+    command: >
+      /bin/bash -c
+      "bin/apply-config-from-env.py conf/standalone.conf
+      && bin/pulsar standalone"
+    ports:
+      - "8092:8080"
+      - "6650:6650"
+    networks:
+      - net_pulsar
+
+
+
+networks:
+  net_db:
+  net_pulsar:
+
+volumes:
+  pg_data_vol:
