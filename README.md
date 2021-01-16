@@ -4,7 +4,7 @@
 ![system design](payment-gateway/docs/images/system-design.png)
 
 ### Data Model
-You can find datamodel(database schema) in [`payment-gateway/deployment/migration` directory](https://github.com/hamed-yousefi/payment-system/blob/main/payment-gateway/deployment/database/migration/000001_base.up.sql)
+You can find datamodel(database schema) in [` payment-system/payment-gateway/deployment/database/migration/000001_base.up.sql` file](https://github.com/hamed-yousefi/payment-system/blob/main/payment-gateway/deployment/database/migration/000001_base.up.sql)
 
 ### Microservices
 This project contains five services:
